@@ -33,9 +33,8 @@ function App() {
                                         <Hero />
                                         <About />
                                         <Services />
-                                        <Pricing />
-                                        <Certificated />
                                         <Portfolio />
+                                        <Pricing />
                                         <Contact />
                                     </>
                                 } />

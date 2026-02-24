@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 import logoPeacock from '../../assets/logo-locytech-dark.png';
 import { useTheme } from '../../hooks/useTheme';
+import '../../styles/logo-animation.css';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,10 +57,13 @@ const Header = () => {
                         <a href="#hero">
                             <img src={logoPeacock} alt="LocyTech Logo" className="h-20 w-auto object-contain drop-shadow-md" />
                         </a>
-                        <span className="text-2xl font-display font-bold text-gray-900 dark:text-white tracking-tight">
-                            <a href="#about" className="text-[#FACC15] hover:text-gray-800 dark:hover:text-white transition-colors">Locy</a>
-                            <a href="#services" className="text-primary hover:text-gray-800 dark:hover:text-white transition-colors">Tech</a>
-                        </span>
+                        <a href="#hero" className="logo-animate-container text-2xl font-display">
+                            <span className="actual-text">LocyTech</span>
+                            <span className="hover-text" aria-hidden="true">
+                                <span className="hover-locy">Locy</span>
+                                <span className="hover-tech">Tech</span>
+                            </span>
+                        </a>
                     </div>
 
                     {/* Desktop Navigation */}

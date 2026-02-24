@@ -1,6 +1,7 @@
 import React from 'react';
 import logoPeacock from '../../assets/logo-locytech-dark.png';
 import { Instagram, Linkedin, Facebook, MessageCircle } from 'lucide-react';
+import '../../styles/logo-animation.css';
 
 const Footer = () => {
     return (
@@ -10,9 +11,13 @@ const Footer = () => {
                     <div className="md:col-span-2">
                         <div className="flex items-center gap-3 mb-6">
                             <img src={logoPeacock} alt="LocyTech Logo" className="h-10 w-auto object-contain" />
-                            <div className="text-2xl font-bold">
-                                Locy<span className="text-primary">Tech</span>
-                            </div>
+                            <a href="#hero" className="logo-animate-container text-2xl font-display">
+                                <span className="actual-text">LocyTech</span>
+                                <span className="hover-text" aria-hidden="true">
+                                    <span className="hover-locy">Locy</span>
+                                    <span className="hover-tech">Tech</span>
+                                </span>
+                            </a>
                         </div>
                         <p className="text-slate-500 dark:text-gray-400 mb-6">
                             Site profissional, rápido e que passa confiança.

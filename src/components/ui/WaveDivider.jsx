@@ -15,6 +15,7 @@ const WaveDivider = ({ lightFill, darkFill, type = 'wave' }) => {
         'slant-left': "M0,120 L1200,0 L1200,120 L0,120 Z", // sharp diagonal line covering the bottom right
         'slant-right': "M0,0 L1200,120 L0,120 Z", // sharp diagonal line covering the bottom left
         'curve-center': "M0,120 Q600,-40 1200,120 Z", // smooth hill/valley dipping in the center
+        'triangle-center': "M0,120 L600,0 L1200,120 Z", // sharp triangle peak in the center
     };
 
     const activePath = paths[type] || paths['wave'];
