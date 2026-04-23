@@ -13,7 +13,7 @@ const Contact = () => {
         e.preventDefault();
         const text = `Olá, vim pelo site! Me chamo *${formData.name}* (${formData.email}).\n\n${formData.message}`;
         const encoded = encodeURIComponent(text);
-        window.open(`https://wa.me/55999999999?text=${encoded}`, '_blank');
+        window.open(`https://wa.me/5551920057268?text=${encoded}`, '_blank');
         setFormData({ name: '', email: '', phone: '', message: '' });
     };
 
@@ -25,8 +25,8 @@ const Contact = () => {
         <section id="contact" className="py-24 bg-[#f8fafc] dark:bg-[#020617] relative overflow-hidden transition-colors duration-300">
             {/* Background elements */}
             <div className="absolute inset-0 bg-grid-pattern opacity-0 dark:opacity-[0.03] pointer-events-none transition-opacity duration-300"></div>
-            <div className="absolute right-0 top-0 w-1/3 h-full bg-primary/5 blur-[120px] pointer-events-none"></div>
-            <div className="absolute left-0 bottom-0 w-1/4 h-full bg-blue-600/5 blur-[100px] pointer-events-none"></div>
+            <div className="absolute right-0 top-[10%] w-1/3 h-[80%] bg-primary/[0.03] blur-[140px] pointer-events-none"></div>
+            <div className="absolute left-0 bottom-[10%] w-1/4 h-[80%] bg-blue-600/[0.03] blur-[120px] pointer-events-none"></div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -62,7 +62,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-1">Telefone</h3>
-                                    <p className="text-slate-600 dark:text-gray-400">(99) 99999-9999</p>
+                                    <a href="https://wa.me/5551920057268" target="_blank" rel="noreferrer" className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors">(51) 92005-7268</a>
                                 </div>
                             </div>
                         </div>
@@ -141,7 +141,7 @@ const Contact = () => {
                                 className="w-full py-4 bg-primary hover:bg-[#00d0dd] text-[#020617] font-bold rounded-xl transition-all duration-300 flex justify-center items-center gap-2 group hover:shadow-[0_0_20px_rgba(0,240,255,0.4)]"
                             >
                                 <span className="relative z-10 flex items-center justify-center gap-2">
-                                    PEDIR ORÇAMENTO
+                                    INICIAR MEU PROJETO
                                     <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                                 </span>
                             </button>

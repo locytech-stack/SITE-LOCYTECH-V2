@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    @media (min-width: 1024px) {
+      zoom: 0.9;
+    }
+  }
+
   body {
     @apply bg-white text-gray-900 dark:bg-[#050505] dark:text-white font-sans overflow-x-hidden transition-colors duration-300;
   }
@@ -11,6 +18,18 @@
 /* Custom Styles */
 .glass-panel {
   @apply bg-gray-100/30 dark:bg-white/5 backdrop-blur-md border border-black/20 dark:border-white/10;
+}
+
+.btn-primary {
+  @apply inline-block bg-primary text-[#020617] font-bold rounded-xl py-3 px-6 transition-all duration-300 hover:bg-[#00d0dd] hover:shadow-[0_0_25px_rgba(0,240,255,0.4)];
+}
+
+.btn-outline {
+  @apply inline-block bg-transparent border-2 font-bold rounded-xl py-3 px-6 transition-all duration-300;
+}
+
+.code-glow {
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.08), 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
 .text-gradient-animated {

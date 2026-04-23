@@ -17,7 +17,7 @@ const Pricing = () => {
                 "1h de ajustes mensais"
             ],
             isPopular: false,
-            buttonStyle: "btn-outline border-darkblue text-darkblue hover:bg-darkblue hover:text-white"
+            buttonStyle: "btn-outline border-gray-300 dark:border-white/20 text-slate-800 dark:text-white hover:bg-slate-800 dark:hover:bg-white hover:text-white dark:hover:text-slate-900"
         },
         {
             name: "Visual Update",
@@ -43,7 +43,7 @@ const Pricing = () => {
                 "Consultoria mensal de Growth"
             ],
             isPopular: false,
-            buttonStyle: "btn-outline border-darkblue text-darkblue hover:bg-darkblue hover:text-white"
+            buttonStyle: "btn-outline border-gray-300 dark:border-white/20 text-slate-800 dark:text-white hover:bg-slate-800 dark:hover:bg-white hover:text-white dark:hover:text-slate-900"
         }
     ];
 
@@ -65,7 +65,7 @@ const Pricing = () => {
     return (
         <section id="plans" className="py-24 bg-white dark:bg-[#020617] relative overflow-hidden transition-colors duration-300">
             {/* Background Decoration */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-gray-50 to-transparent dark:from-white/5 pointer-events-none"></div>
+            <div className="absolute top-[10%] right-0 w-1/3 h-[80%] bg-gradient-to-l from-gray-50 to-transparent dark:from-white/[0.03] pointer-events-none blur-3xl"></div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-16">
@@ -137,14 +137,14 @@ const Pricing = () => {
                             </ul>
 
                             <a href="#contact" className={`w-full block text-center py-4 rounded-lg font-semibold transition-all ${plan.buttonStyle}`}>
-                                Contratar Agora
+                                Começar a Escalar
                             </a>
                         </motion.div>
                     ))}
                 </motion.div>
             </div>
 
-            <WaveDivider lightFill="#f9fafb" darkFill="#020617" type="slant-left" />
+            <WaveDivider lightFill="#f8fafc" darkFill="#020617" type="slant-left" />
         </section>
     );
 };

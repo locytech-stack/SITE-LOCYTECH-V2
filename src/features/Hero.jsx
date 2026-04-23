@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, EffectFade, Navigation } from 'swiper/modules';
+import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useTheme } from '../hooks/useTheme';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
-import '../styles/hero-stars.css';
 import '../styles/hero-clouds.css'; // Assuming we'll create this or use inline
 import WaveDivider from '../components/ui/WaveDivider';
+import StarField from '../components/ui/StarField';
 
 const Hero = () => {
     const { theme } = useTheme();
@@ -60,7 +59,7 @@ const Hero = () => {
     };
 
     return (
-        <section id="hero" className="hero-section relative w-full h-[100dvh] min-h-[800px] overflow-hidden bg-white dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-500">
+        <section id="hero" className="hero-section relative w-full h-[100dvh] min-h-[800px] overflow-hidden bg-white dark:bg-[#020617] text-gray-900 dark:text-white transition-colors duration-500">
             {/* Global Background & Stars/Clouds */}
 
             <div className="absolute inset-0 z-0 pointer-events-none transition-colors duration-1000">
@@ -72,9 +71,7 @@ const Hero = () => {
             <div className="hero-stars-wrapper pointer-events-none absolute inset-0 z-0">
                 {/* The "onda" (star moving effect) is now completely HIDDEN in light mode, retaining it only for dark mode. */}
                 <div className="star-background transition-all duration-1000 opacity-0 dark:opacity-100">
-                    <div id="stars" />
-                    <div id="stars2" />
-                    <div id="stars3" />
+                    <StarField />
                 </div>
                 {theme !== 'dark' && (
                     <div className="absolute inset-0 opacity-40 transition-opacity duration-1000 overflow-hidden">
@@ -100,17 +97,11 @@ const Hero = () => {
                 )}
             </div>
             <Swiper
-                modules={[Autoplay, Pagination, EffectFade, Navigation]}
+                modules={[Autoplay, EffectFade, Navigation]}
                 effect={'fade'}
                 fadeEffect={{ crossFade: true }}
                 speed={1200}
                 autoplay={{ delay: 8000, disableOnInteraction: false }}
-                pagination={{
-                    clickable: true,
-                    renderBullet: (index, className) => {
-                        return '<span class="' + className + ' group relative"><span class="absolute -top-4 left-1/2 -translate-x-1/2 text-[10px] font-mono opacity-0 group-hover:opacity-100 transition-opacity text-primary">0' + (index + 1) + '</span></span>';
-                    }
-                }}
                 navigation={true}
                 loop={true}
                 className="hero-swiper w-full h-full"
@@ -122,11 +113,10 @@ const Hero = () => {
                 <SwiperSlide>
                     {({ isActive }) => (
                         <div className="w-full h-full flex items-center relative overflow-hidden font-display">
-                            {/* Background Layer */}
+                            {/* Enhanced Ambient Orbs (Dark Glassmorphism) */}
                             <div className="absolute inset-0 z-0 pointer-events-none">
-                                {/* Global Background Moved to Parent */}
-                                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-cyan-300/30 dark:bg-primary/20 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen"></div>
-                                <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-sky-200/40 dark:bg-blue-600/10 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen"></div>
+                                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen will-change-transform"></div>
+                                <div className="absolute bottom-[-5%] left-[-5%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen will-change-transform"></div>
                             </div>
 
                             <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
@@ -139,16 +129,23 @@ const Hero = () => {
                                 >
                                     <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 w-fit">
                                         <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-                                        <span className="text-xs font-medium text-primary tracking-wide uppercase">Variante 2.0 Live</span>
+                                        <span className="text-xs font-medium text-primary tracking-wide uppercase">Pare de Perder Dinheiro</span>
                                     </motion.div>
-                                    <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-gray-900 dark:text-white">
-                                        Desenvolvimento <br />
-                                        <span className="text-gradient-cyan">Next-Gen</span>
+                                    <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-gray-900 dark:text-gray-100">
+                                        Tráfego Sem Conversão é <br />
+                                        <span className="text-gradient-cyan">Prejuízo.</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeInUp} className="text-gray-600 dark:text-gray-400 text-lg sm:text-xl font-light leading-relaxed max-w-lg">
-                                        Nós arquitetamos soluções digitais escaláveis, seguras e de alto desempenho sob medida para o crescimento empresarial.
+                                    <motion.p variants={fadeInUp} className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl font-light leading-relaxed max-w-lg">
+                                        Seu site atual é apenas um cartão de visitas estático? Transformamos visitantes em clientes com engenharia de conversão e foco obsessivo em ROI.
                                     </motion.p>
-                                    {/* Buttons Removed */}
+                                    <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mt-6">
+                                        <a href="#contact" className="btn-primary text-center px-8 py-4 text-lg font-bold shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:shadow-[0_0_40px_rgba(0,240,255,0.5)] transition-all">
+                                            Iniciar Meu Projeto
+                                        </a>
+                                        <a href="#portfolio" className="btn-outline text-center px-8 py-4 text-lg font-bold border-gray-400 dark:border-white/20 hover:bg-white/5 backdrop-blur-sm">
+                                            Ver Resultados Reais
+                                        </a>
+                                    </motion.div>
                                 </motion.div>
 
                                 {/* Right Column: Terminal */}
@@ -227,10 +224,9 @@ const Hero = () => {
                 <SwiperSlide>
                     {({ isActive }) => (
                         <div className="w-full h-full flex items-center relative overflow-hidden font-display">
-                            {/* Background */}
+                            {/* Enhanced Ambient Orbs (Dark Glassmorphism) */}
                             <div className="absolute inset-0 z-0 pointer-events-none">
-                                {/* Global Background Moved to Parent */}
-                                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-cyan-200/40 dark:bg-primary/10 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen"></div>
+                                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen will-change-transform"></div>
                             </div>
 
                             <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
@@ -244,16 +240,19 @@ const Hero = () => {
                                         <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
                                         <span className="text-xs font-medium text-primary tracking-wide uppercase font-mono">System: Online</span>
                                     </motion.div>
-                                    <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-gray-900 dark:text-white mb-4">
-                                        Venda Mais <br />
-                                        Com Sites e <br />
-                                        <span className="font-mono font-semibold tracking-tighter text-gradient-blue">Sistemas_</span>
+                                    <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-gray-900 dark:text-gray-100 mb-4">
+                                        Não Frustre <br />
+                                        Seus <br />
+                                        <span className="font-mono font-semibold tracking-tighter text-gradient-blue">Melhores Leads_</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeInUp} className="text-gray-600 dark:text-gray-400 text-lg sm:text-xl font-light leading-relaxed max-w-lg font-display">
-                                        Transforme seu negócio com soluções digitais de alta performance. Desenvolvemos sites e plataformas que convertem visitantes em clientes reais.
+                                    <motion.p variants={fadeInUp} className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl font-light leading-relaxed max-w-lg font-display">
+                                        Lentidão e design confuso matam vendas. Projetamos interfaces intuitivas e ultrarrápidas que guiam o usuário diretamente para a compra.
                                     </motion.p>
-
-                                    {/* Buttons Removed as requested */}
+                                    <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mt-6">
+                                        <a href="#contact" className="btn-primary text-center px-8 py-4 text-lg font-bold shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] transition-all">
+                                            Escalar Minhas Vendas Agora
+                                        </a>
+                                    </motion.div>
                                 </motion.div>
 
                                 {/* Visual - Dashboard UI */}
@@ -313,8 +312,8 @@ const Hero = () => {
                                                             <div className="h-24 bg-white dark:bg-[#131825] rounded border border-black/10 dark:border-white/5 p-3 flex flex-col justify-between relative overflow-hidden shadow-sm">
                                                                 <div className="text-[10px] text-gray-500 dark:text-slate-400 uppercase font-bold tracking-wider">Tráfego de Rede</div>
                                                                 <div className="text-2xl font-display font-bold text-gray-900 dark:text-white relative z-10">2.4<span className="text-sm text-gray-400 dark:text-slate-500">PB</span></div>
-                                                                <div className="absolute bottom-0 right-0 p-2 opacity-10 dark:opacity-20">
-                                                                    <span className="material-icons text-4xl text-cyan-500">globe</span>
+                                                                <div className="absolute bottom-0 right-0 p-2 opacity-10 dark:opacity-20 overflow-hidden">
+                                                                    <span className="material-icons text-4xl text-cyan-500" aria-hidden="true">globe</span>
                                                                 </div>
                                                                 <div className="h-1 w-full bg-gray-100 dark:bg-slate-800 rounded-full mt-2 overflow-hidden">
                                                                     <div className="h-full bg-cyan-400 w-[75%] shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
@@ -323,8 +322,8 @@ const Hero = () => {
                                                             <div className="h-24 bg-white dark:bg-[#131825] rounded border border-black/10 dark:border-white/5 p-3 flex flex-col justify-between relative overflow-hidden shadow-sm">
                                                                 <div className="text-[10px] text-gray-500 dark:text-slate-400 uppercase font-bold tracking-wider">Ameaças Bloqueadas</div>
                                                                 <div className="text-2xl font-display font-bold text-gray-900 dark:text-white relative z-10">0<span className="text-sm text-blue-600 dark:text-blue-400 ml-1">Seguro</span></div>
-                                                                <div className="absolute bottom-0 right-0 p-2 opacity-10 dark:opacity-20">
-                                                                    <span className="material-icons text-4xl text-blue-500">security</span>
+                                                                <div className="absolute bottom-0 right-0 p-2 opacity-10 dark:opacity-20 overflow-hidden">
+                                                                    <span className="material-icons text-4xl text-blue-500" aria-hidden="true">security</span>
                                                                 </div>
                                                                 <div className="h-1 w-full bg-gray-200 dark:bg-slate-800 rounded-full mt-2 overflow-hidden">
                                                                     <div className="h-full bg-blue-500 w-[100%] shadow-[0_0_10px_rgba(59,130,246,0.3)] dark:shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
@@ -354,8 +353,8 @@ const Hero = () => {
                                         <div className="absolute -top-6 -right-4 md:-right-12 z-30 w-48 glass-panel bg-white/70 dark:bg-transparent p-4 rounded-xl shadow-xl dark:shadow-2xl floating-anim border border-black/5 dark:border-white/10 backdrop-blur-xl">
                                             <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/40 dark:from-white/5 to-transparent pointer-events-none"></div>
                                             <div className="flex items-center gap-3 mb-2 relative z-10">
-                                                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
-                                                    <span className="material-icons text-[18px]">bolt</span>
+                                                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)] overflow-hidden">
+                                                    <span className="material-icons text-[18px]" aria-hidden="true">bolt</span>
                                                 </div>
                                                 <span className="text-sm font-medium text-gray-800 dark:text-slate-200">Status do Sistema</span>
                                             </div>
@@ -375,8 +374,8 @@ const Hero = () => {
                                                         <span className="text-xs text-blue-400 font-medium">↑ 12%</span>
                                                     </div>
                                                 </div>
-                                                <div className="p-1.5 rounded bg-primary/20 text-primary border border-primary/20">
-                                                    <span className="material-icons text-[20px]">trending_up</span>
+                                                <div className="p-1.5 rounded bg-primary/20 text-primary border border-primary/20 overflow-hidden">
+                                                    <span className="material-icons text-[20px]" aria-hidden="true">trending_up</span>
                                                 </div>
                                             </div>
                                             <div className="flex items-end gap-1.5 h-12 w-full relative z-10">
@@ -406,8 +405,8 @@ const Hero = () => {
                     {({ isActive }) => (
                         <div className="w-full h-full flex items-center relative overflow-hidden font-display">
                             <div className="absolute inset-0 z-0 pointer-events-none">
-                                {/* Global Background Moved to Parent */}
-                                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-sky-200/50 dark:bg-primary/20 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen"></div>
+                                {/* Enhanced Ambient Orbs (Dark Glassmorphism) */}
+                                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen will-change-transform"></div>
                             </div>
 
                             <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
@@ -419,16 +418,23 @@ const Hero = () => {
                                 >
                                     <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 w-fit">
                                         <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-                                        <span className="text-xs font-medium text-primary tracking-wide uppercase">Variante 2.0 Live</span>
+                                        <span className="text-xs font-medium text-primary tracking-wide uppercase">Autoridade Imediata</span>
                                     </motion.div>
-                                    <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-gray-900 dark:text-white">
-                                        Desenvolvimento <br />
-                                        <span className="text-gradient-blue">Wireframe</span>
+                                    <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight text-gray-900 dark:text-gray-100">
+                                        Sua Marca <br />
+                                        Está <span className="text-gradient-blue">Invisível?</span>
                                     </motion.h1>
-                                    <motion.p variants={fadeInUp} className="text-gray-600 dark:text-gray-400 text-lg sm:text-xl font-light leading-relaxed max-w-lg">
-                                        Nós arquitetamos soluções digitais escaláveis, seguras e de alto desempenho sob medida para o crescimento empresarial.
+                                    <motion.p variants={fadeInUp} className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl font-light leading-relaxed max-w-lg">
+                                        Sites genéricos não geram confiança. Construímos plataformas exclusivas que posicionam sua empresa como autoridade absoluta no mercado, desde o primeiro clique.
                                     </motion.p>
-                                    {/* Buttons Removed */}
+                                    <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mt-6">
+                                        <a href="#contact" className="btn-primary text-center px-8 py-4 text-lg font-bold shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:shadow-[0_0_40px_rgba(0,240,255,0.5)] transition-all">
+                                            Garantir Minha Presença Premium
+                                        </a>
+                                        <a href="#about" className="btn-outline text-center px-8 py-4 text-lg font-bold border-gray-400 dark:border-white/20 hover:bg-white/5 backdrop-blur-sm">
+                                            Quem Somos
+                                        </a>
+                                    </motion.div>
                                 </motion.div>
 
                                 {/* Visual: Growth Chart */}
@@ -537,12 +543,12 @@ const Hero = () => {
                                         transition={{ delay: 1, duration: 0.8 }}
                                     >
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-400">
-                                                <span className="material-icons">rocket_launch</span>
+                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-400 overflow-hidden">
+                                                <span className="material-icons" aria-hidden="true">rocket_launch</span>
                                             </div>
                                             <div>
                                                 <p className="text-xs text-gray-500 dark:text-gray-400">Meta</p>
-                                                <p className="text-sm font-bold text-gray-900 dark:text-white">🚀 Superada</p>
+                                                <p className="text-sm font-bold text-gray-900 dark:text-white">Meta Superada</p>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -554,8 +560,8 @@ const Hero = () => {
                                         transition={{ delay: 1.5, duration: 0.8 }}
                                     >
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-400">
-                                                <span className="material-icons">trending_up</span>
+                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-400 overflow-hidden">
+                                                <span className="material-icons" aria-hidden="true">trending_up</span>
                                             </div>
                                             <div>
                                                 <p className="text-xs text-gray-500 dark:text-gray-400">Crescimento</p>

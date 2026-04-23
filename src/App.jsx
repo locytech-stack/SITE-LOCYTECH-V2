@@ -5,13 +5,14 @@ import Layout from './components/layout/Layout';
 import { ThemeProvider } from './hooks/useTheme';
 
 import Hero from './features/Hero';
-// Lazy load features/pages
 const About = lazy(() => import('./features/About'));
 const Services = lazy(() => import('./features/Services'));
 const Pricing = lazy(() => import('./features/Pricing'));
 const Portfolio = lazy(() => import('./features/Portfolio'));
 const Contact = lazy(() => import('./features/Contact'));
-const Certificated = lazy(() => import('./features/Certificated'));
+const Privacy = lazy(() => import('./features/Privacy'));
+const Terms = lazy(() => import('./features/Terms'));
+// Pricing removida — trabalhamos apenas com orçamentos personalizados
 
 // Loading component
 const LoadingSpinner = () => (
@@ -33,12 +34,12 @@ function App() {
                                         <Hero />
                                         <About />
                                         <Services />
-                                        <Pricing />
-                                        <Certificated />
                                         <Portfolio />
                                         <Contact />
                                     </>
                                 } />
+                                <Route path="privacidade" element={<Privacy />} />
+                                <Route path="termos" element={<Terms />} />
                             </Route>
                         </Routes>
                     </Suspense>

@@ -7,39 +7,20 @@ import 'swiper/css/effect-fade';
 
 import WaveDivider from '../components/ui/WaveDivider';
 import teamMarcelo from '../assets/team-marcelo.png';
-// import teamLucas from '../assets/team-lucas.png'; // Removed as per user request
 import teamAna from '../assets/team-ana.png';
-// import teamProfessional from '../assets/team_professional_dev.png'; // Image generation failed
 
 const About = () => {
-    const fadeIn = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-    };
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2
-            }
-        }
-    };
-
     const carouselImages = [teamMarcelo, teamAna];
 
     return (
         <section id="about" className="py-24 bg-[#f0f9ff] dark:bg-[#020617] relative overflow-hidden transition-colors duration-300">
-            {/* Background Elements */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[10%] left-[-5%] w-[400px] h-[400px] bg-primary/5 dark:bg-primary/10 rounded-full blur-[100px]"></div>
-                <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-secondary/5 dark:bg-secondary/10 rounded-full blur-[100px]"></div>
+                <div className="absolute top-[15%] left-[-5%] w-[400px] h-[400px] bg-primary/5 dark:bg-primary/5 rounded-full blur-[120px]"></div>
+                <div className="absolute bottom-[15%] right-[-5%] w-[400px] h-[400px] bg-secondary/5 dark:bg-secondary/5 rounded-full blur-[120px]"></div>
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
-                    {/* Text Content */}
                     <motion.div
                         className="space-y-8"
                         initial={{ opacity: 0, x: -50 }}
@@ -50,33 +31,35 @@ const About = () => {
                         <div>
                             <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-4 block">Quem Somos</span>
                             <h2 className="text-4xl md:text-5xl font-display font-bold text-darkblue dark:text-white leading-tight">
-                                Qualidade com <br />
-                                <span className="text-gradient-cyan">Simplicidade</span>
+                                Sobre a <span className="text-gradient-cyan">LocyTech</span>
                             </h2>
                         </div>
 
                         <div className="space-y-6 text-lg text-gray-600 dark:text-gray-400">
                             <p>
-                                Nossa missão é entregar qualidade com simplicidade e sem enrolação. Transformamos a
-                                presença digital de nossos clientes por meio de sites bonitos, rápidos e focados em
-                                conversão.
+                                Somos uma equipe de desenvolvimento com sede em <strong className="text-darkblue dark:text-white">Santa Cruz do Sul (RS)</strong>, fundada em 2024. Trabalhamos com empresas e profissionais que querem uma presença digital sólida, funcional e pensada para o negócio — não só para o visual.
                             </p>
                             <p>
-                                A LocyTech foi fundada por apaixonados por tecnologia que acreditam que todo negócio
-                                merece um site incrível. Combinamos design estratégico com desenvolvimento eficiente para
-                                entregar resultados reais.
+                                Desenvolvemos <strong className="text-darkblue dark:text-white">sites institucionais, landing pages, e-commerces e sistemas sob medida</strong>. Cada projeto é conduzido diretamente com quem codifica — sem atravessadores, sem retrabalho, sem promessa que não se cumpre.
                             </p>
                             <p>
-                                Atuamos com foco na transparência e na parceria de longo prazo, oferecendo soluções que
-                                crescem junto com sua empresa.
+                                Nosso diferencial é simples: <strong className="text-darkblue dark:text-white">não aceitamos qualquer projeto</strong>. Priorizamos quem realmente quer construir algo bem feito. Em troca, entregamos código limpo, performance real e suporte direto com o time que desenvolveu o seu projeto.
                             </p>
                         </div>
 
-                        <div className="pt-6 border-t border-gray-100 dark:border-white/10">
-                            <h3 className="text-xl font-bold text-darkblue dark:text-white mb-2">Foco em Resultados Reais</h3>
-                            <p className="text-gray-500 dark:text-gray-500 text-sm">
-                                "Tecnologia é nossa ferramenta, criatividade é nossa essência."
-                            </p>
+                        <div className="grid grid-cols-3 gap-4 pt-6 border-t border-gray-100 dark:border-white/10">
+                            <div>
+                                <p className="text-3xl font-display font-bold text-primary">2024</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-500 uppercase tracking-wider mt-1">Fundação</p>
+                            </div>
+                            <div>
+                                <p className="text-3xl font-display font-bold text-primary">RS</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-500 uppercase tracking-wider mt-1">Santa Cruz do Sul</p>
+                            </div>
+                            <div>
+                                <p className="text-3xl font-display font-bold text-primary">100%</p>
+                                <p className="text-xs text-gray-500 dark:text-gray-500 uppercase tracking-wider mt-1">Sob Medida</p>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -118,7 +101,7 @@ const About = () => {
 
                         <div className="absolute inset-0 bg-gradient-to-t from-darkblue/80 via-transparent to-transparent z-10 pointer-events-none"></div>
                         <div className="absolute bottom-8 left-8 right-8 text-white z-20">
-                            <p className="font-display text-xl">"Tecnologia é nossa ferramenta, criatividade é nossa essência."</p>
+                            <p className="font-display text-xl leading-snug">"Cada projeto é conduzido diretamente por quem desenvolve. Sem intermediários."</p>
                         </div>
                     </motion.div>
                 </div>

@@ -15,13 +15,14 @@ const WaveDivider = ({ lightFill, darkFill, type = 'wave' }) => {
         'slant-left': "M0,120 L1200,0 L1200,120 L0,120 Z", // sharp diagonal line covering the bottom right
         'slant-right': "M0,0 L1200,120 L0,120 Z", // sharp diagonal line covering the bottom left
         'curve-center': "M0,120 Q600,-40 1200,120 Z", // smooth hill/valley dipping in the center
+        'triangle-center': "M0,120 L600,0 L1200,120 Z", // sharp triangle peak in the center
     };
 
     const activePath = paths[type] || paths['wave'];
 
     // We keep heights small (15px to 40px max) to make them subtle and elegant
     return (
-        <div className="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-[0] z-50 pointer-events-none">
+        <div className="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-[0] z-[2] pointer-events-none">
             <svg
                 className="relative block h-[15px] sm:h-[20px] md:h-[30px] lg:h-[40px]"
                 style={{ width: 'calc(100% + 2px)', transform: 'translate(-1px, 0)' }}
