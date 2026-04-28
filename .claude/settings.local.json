@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(del \"C:\\\\Sites\\\\SITE-LOCYTECH-V2\\\\src\\\\features\\\\Testimonials.jsx\")",
+      "Bash(del \"C:\\\\Sites\\\\SITE-LOCYTECH-V2\\\\src\\\\features\\\\HowItWorks.jsx\")",
+      "Bash(del \"C:\\\\Sites\\\\SITE-LOCYTECH-V2\\\\src\\\\components\\\\ui\\\\FloatingWhatsApp.jsx\")"
+    ]
+  }
+}

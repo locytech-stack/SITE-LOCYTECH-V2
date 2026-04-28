@@ -13,7 +13,7 @@ const Contact = () => {
         e.preventDefault();
         const text = `Olá, vim pelo site! Me chamo *${formData.name}* (${formData.email}).\n\n${formData.message}`;
         const encoded = encodeURIComponent(text);
-        window.open(`https://wa.me/55999999999?text=${encoded}`, '_blank');
+        window.open(`https://wa.me/5551920057268?text=${encoded}`, '_blank');
         setFormData({ name: '', email: '', phone: '', message: '' });
     };
 
@@ -25,7 +25,7 @@ const Contact = () => {
         <section id="contact" className="py-24 bg-[#f8fafc] dark:bg-[#020617] relative overflow-hidden transition-colors duration-300">
             {/* Background elements */}
             <div className="absolute inset-0 bg-grid-pattern opacity-0 dark:opacity-[0.03] pointer-events-none transition-opacity duration-300"></div>
-            <div className="absolute right-0 top-[10%] w-1/3 h-[80%] bg-blue-600/10 blur-[140px] pointer-events-none"></div>
+            <div className="absolute right-0 top-[10%] w-1/3 h-[80%] bg-primary/[0.03] blur-[140px] pointer-events-none"></div>
             <div className="absolute left-0 bottom-[10%] w-1/4 h-[80%] bg-blue-600/[0.03] blur-[120px] pointer-events-none"></div>
 
             <div className="container mx-auto px-6 relative z-10">
@@ -62,7 +62,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-1">Telefone</h3>
-                                    <p className="text-slate-600 dark:text-gray-400">(99) 99999-9999</p>
+                                    <a href="https://wa.me/5551920057268" target="_blank" rel="noreferrer" className="text-slate-600 dark:text-gray-400 hover:text-primary transition-colors">(51) 92005-7268</a>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@ const Contact = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="bg-white dark:bg-white/5 backdrop-blur-md p-8 md:p-10 rounded-3xl relative overflow-hidden border border-gray-200 dark:border-white/10 shadow-xl dark:shadow-none"
                     >
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/20 blur-[50px] pointer-events-none"></div>
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[50px] pointer-events-none"></div>
 
                         <h2 className="text-3xl font-display font-bold text-slate-800 dark:text-white mb-2">
                             Vamos Criar Algo <span className="text-gradient-cyan">Incrível?</span>

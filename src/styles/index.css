@@ -4,6 +4,7 @@
 
 @layer base {
   html {
+    scroll-behavior: smooth;
     @media (min-width: 1024px) {
       zoom: 0.9;
     }
@@ -17,6 +18,18 @@
 /* Custom Styles */
 .glass-panel {
   @apply bg-gray-100/30 dark:bg-white/5 backdrop-blur-md border border-black/20 dark:border-white/10;
+}
+
+.btn-primary {
+  @apply inline-block bg-primary text-[#020617] font-bold rounded-xl py-3 px-6 transition-all duration-300 hover:bg-[#00d0dd] hover:shadow-[0_0_25px_rgba(0,240,255,0.4)];
+}
+
+.btn-outline {
+  @apply inline-block bg-transparent border-2 font-bold rounded-xl py-3 px-6 transition-all duration-300;
+}
+
+.code-glow {
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.08), 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
 .text-gradient-animated {
@@ -139,20 +152,6 @@
       transform: scale(1.1);
     }
   }
-}
-
-/* Hero Carousel Blur Transition */
-.hero-swiper .swiper-slide {
-  transition: filter 1.2s ease-in-out, opacity 1.2s ease-in-out !important;
-}
-
-.hero-swiper .swiper-slide:not(.swiper-slide-active) {
-  filter: blur(20px);
-}
-
-.hero-swiper .swiper-slide-active {
-  filter: blur(0);
-  transition-delay: 0.1s !important;
 }
 
 /* --- Portfolio Uiverse Card --- */

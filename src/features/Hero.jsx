@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, EffectFade, Navigation, Parallax } from 'swiper/modules';
+import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useTheme } from '../hooks/useTheme';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
-import '../styles/hero-stars.css';
 import '../styles/hero-clouds.css'; // Assuming we'll create this or use inline
 import WaveDivider from '../components/ui/WaveDivider';
+import StarField from '../components/ui/StarField';
 
 const Hero = () => {
     const { theme } = useTheme();
@@ -20,6 +19,7 @@ const Hero = () => {
     const mouseY = useMotionValue(0);
     const springX = useSpring(mouseX, { damping: 50, stiffness: 400 });
     const springY = useSpring(mouseY, { damping: 50, stiffness: 400 });
+    // State for current theme index
     const [currentThemeIndex, setCurrentThemeIndex] = React.useState(0);
 
     const handleMouseMove = (e) => {
@@ -71,9 +71,7 @@ const Hero = () => {
             <div className="hero-stars-wrapper pointer-events-none absolute inset-0 z-0">
                 {/* The "onda" (star moving effect) is now completely HIDDEN in light mode, retaining it only for dark mode. */}
                 <div className="star-background transition-all duration-1000 opacity-0 dark:opacity-100">
-                    <div id="stars" />
-                    <div id="stars2" />
-                    <div id="stars3" />
+                    <StarField />
                 </div>
                 {theme !== 'dark' && (
                     <div className="absolute inset-0 opacity-40 transition-opacity duration-1000 overflow-hidden">
@@ -93,25 +91,17 @@ const Hero = () => {
                         </svg>
 
                         {/* Soft background glows (Aurora effect enhanced) */}
-                        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-[120px] mix-blend-screen animate-[float_10s_ease-in-out_infinite]"></div>
-                        <div className="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[140px] mix-blend-multiply animate-[float_12s_ease-in-out_infinite_reverse]"></div>
+                        <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-200/50 rounded-full blur-[120px] mix-blend-multiply animate-[float_10s_ease-in-out_infinite]"></div>
+                        <div className="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-sky-200/50 rounded-full blur-[140px] mix-blend-multiply animate-[float_12s_ease-in-out_infinite_reverse]"></div>
                     </div>
                 )}
             </div>
-
             <Swiper
-                modules={[Autoplay, Pagination, EffectFade, Navigation, Parallax]}
-                parallax={true}
+                modules={[Autoplay, EffectFade, Navigation]}
                 effect={'fade'}
                 fadeEffect={{ crossFade: true }}
                 speed={1200}
                 autoplay={{ delay: 8000, disableOnInteraction: false }}
-                pagination={{
-                    clickable: true,
-                    renderBullet: (index, className) => {
-                        return '<span class="' + className + ' group relative"><span class="absolute -top-4 left-1/2 -translate-x-1/2 text-[10px] font-mono opacity-0 group-hover:opacity-100 transition-opacity text-primary">0' + (index + 1) + '</span></span>';
-                    }
-                }}
                 navigation={true}
                 loop={true}
                 className="hero-swiper w-full h-full"
@@ -124,8 +114,8 @@ const Hero = () => {
                     {({ isActive }) => (
                         <div className="w-full h-full flex items-center relative overflow-hidden font-display">
                             {/* Enhanced Ambient Orbs (Dark Glassmorphism) */}
-                            <div className="absolute inset-0 z-0 pointer-events-none" data-swiper-parallax="-300">
-                                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] mix-blend-screen will-change-transform"></div>
+                            <div className="absolute inset-0 z-0 pointer-events-none">
+                                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen will-change-transform"></div>
                                 <div className="absolute bottom-[-5%] left-[-5%] w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen will-change-transform"></div>
                             </div>
 
@@ -136,8 +126,6 @@ const Hero = () => {
                                     initial="hidden"
                                     animate={isActive ? "visible" : "hidden"}
                                     variants={slideVariants}
-                                    data-swiper-parallax="-100"
-                                    data-swiper-parallax-opacity="0"
                                 >
                                     <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 w-fit">
                                         <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
@@ -151,7 +139,7 @@ const Hero = () => {
                                         Seu site atual é apenas um cartão de visitas estático? Transformamos visitantes em clientes com engenharia de conversão e foco obsessivo em ROI.
                                     </motion.p>
                                     <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mt-6">
-                                        <a href="#contact" className="btn-primary text-center px-8 py-4 text-lg font-bold hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all">
+                                        <a href="#contact" className="btn-primary text-center px-8 py-4 text-lg font-bold shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:shadow-[0_0_40px_rgba(0,240,255,0.5)] transition-all">
                                             Iniciar Meu Projeto
                                         </a>
                                         <a href="#portfolio" className="btn-outline text-center px-8 py-4 text-lg font-bold border-gray-400 dark:border-white/20 hover:bg-white/5 backdrop-blur-sm">
@@ -164,11 +152,8 @@ const Hero = () => {
                                 <motion.div
                                     className="relative lg:h-[600px] flex items-center justify-center perspective-1000 hidden lg:flex"
                                     style={{ x: springX, y: springY }}
-                                    data-swiper-parallax="200"
-                                    data-swiper-parallax-scale="0.8"
-                                    data-swiper-parallax-opacity="0"
                                 >
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 dark:from-blue-600/10 to-transparent rounded-full blur-3xl transform translate-x-12 translate-y-12"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-300/20 dark:from-primary/10 to-transparent rounded-full blur-3xl transform translate-x-12 translate-y-12"></div>
                                     <div className="relative w-full max-w-lg glass-panel rounded-xl overflow-hidden code-glow transform lg:rotate-y-[-10deg] lg:rotate-x-[5deg] transition-transform hover:rotate-0 duration-700 ease-out animate-float z-20">
                                         {/* Code Window Header */}
                                         <div className="flex items-center justify-between px-4 py-3 bg-[#1e293b] dark:bg-black/40 border-b border-white/10 dark:border-white/5">
@@ -240,7 +225,7 @@ const Hero = () => {
                     {({ isActive }) => (
                         <div className="w-full h-full flex items-center relative overflow-hidden font-display">
                             {/* Enhanced Ambient Orbs (Dark Glassmorphism) */}
-                            <div className="absolute inset-0 z-0 pointer-events-none" data-swiper-parallax="-300">
+                            <div className="absolute inset-0 z-0 pointer-events-none">
                                 <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen will-change-transform"></div>
                             </div>
 
@@ -250,8 +235,6 @@ const Hero = () => {
                                     initial="hidden"
                                     animate={isActive ? "visible" : "hidden"}
                                     variants={slideVariants}
-                                    data-swiper-parallax="-100"
-                                    data-swiper-parallax-opacity="0"
                                 >
                                     <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 w-fit">
                                         <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
@@ -266,7 +249,7 @@ const Hero = () => {
                                         Lentidão e design confuso matam vendas. Projetamos interfaces intuitivas e ultrarrápidas que guiam o usuário diretamente para a compra.
                                     </motion.p>
                                     <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mt-6">
-                                        <a href="#contact" className="btn-primary text-center px-8 py-4 text-lg font-bold hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] transition-all">
+                                        <a href="#contact" className="btn-primary text-center px-8 py-4 text-lg font-bold shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.5)] transition-all">
                                             Escalar Minhas Vendas Agora
                                         </a>
                                     </motion.div>
@@ -276,9 +259,6 @@ const Hero = () => {
                                 <motion.div
                                     className="relative lg:h-[600px] flex items-center justify-center perspective-1000 hidden lg:flex"
                                     style={{ x: springX, y: springY }}
-                                    data-swiper-parallax="200"
-                                    data-swiper-parallax-scale="0.8"
-                                    data-swiper-parallax-opacity="0"
                                 >
                                     <div className="relative w-full max-w-2xl transform transition-transform duration-700 hover:scale-[1.01] z-20">
                                         <div className="relative bg-white dark:bg-[#1a1c20] rounded-[10px] p-[2px] shadow-2xl ring-1 ring-black/10 dark:ring-white/10">
@@ -303,7 +283,7 @@ const Hero = () => {
                                                             <div className="h-4 w-2/3 bg-gray-200 dark:bg-white/5 rounded"></div>
                                                             <div className="h-4 w-3/4 bg-gray-200 dark:bg-white/5 rounded"></div>
                                                             <div className="h-4 w-1/2 bg-gray-200 dark:bg-white/5 rounded"></div>
-                                                            <div className="mt-auto h-16 w-full bg-gradient-to-tr from-cyan-100 to-blue-100 dark:from-cyan-500/10 dark:to-blue-500/10 rounded border border-black/5 dark:border-white/5"></div>
+                                                            <div className="mt-auto h-16 w-full bg-gradient-to-tr from-cyan-100 to-blue-100 dark:from-purple-500/10 dark:to-blue-500/10 rounded border border-black/5 dark:border-white/5"></div>
                                                         </div>
 
                                                         {/* Main Grid */}
@@ -332,8 +312,8 @@ const Hero = () => {
                                                             <div className="h-24 bg-white dark:bg-[#131825] rounded border border-black/10 dark:border-white/5 p-3 flex flex-col justify-between relative overflow-hidden shadow-sm">
                                                                 <div className="text-[10px] text-gray-500 dark:text-slate-400 uppercase font-bold tracking-wider">Tráfego de Rede</div>
                                                                 <div className="text-2xl font-display font-bold text-gray-900 dark:text-white relative z-10">2.4<span className="text-sm text-gray-400 dark:text-slate-500">PB</span></div>
-                                                                <div className="absolute bottom-0 right-0 p-2 opacity-10 dark:opacity-20">
-                                                                    <span className="material-icons text-4xl text-cyan-500">globe</span>
+                                                                <div className="absolute bottom-0 right-0 p-2 opacity-10 dark:opacity-20 overflow-hidden">
+                                                                    <span className="material-icons text-4xl text-cyan-500" aria-hidden="true">globe</span>
                                                                 </div>
                                                                 <div className="h-1 w-full bg-gray-100 dark:bg-slate-800 rounded-full mt-2 overflow-hidden">
                                                                     <div className="h-full bg-cyan-400 w-[75%] shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
@@ -342,8 +322,8 @@ const Hero = () => {
                                                             <div className="h-24 bg-white dark:bg-[#131825] rounded border border-black/10 dark:border-white/5 p-3 flex flex-col justify-between relative overflow-hidden shadow-sm">
                                                                 <div className="text-[10px] text-gray-500 dark:text-slate-400 uppercase font-bold tracking-wider">Ameaças Bloqueadas</div>
                                                                 <div className="text-2xl font-display font-bold text-gray-900 dark:text-white relative z-10">0<span className="text-sm text-blue-600 dark:text-blue-400 ml-1">Seguro</span></div>
-                                                                <div className="absolute bottom-0 right-0 p-2 opacity-10 dark:opacity-20">
-                                                                    <span className="material-icons text-4xl text-blue-500">security</span>
+                                                                <div className="absolute bottom-0 right-0 p-2 opacity-10 dark:opacity-20 overflow-hidden">
+                                                                    <span className="material-icons text-4xl text-blue-500" aria-hidden="true">security</span>
                                                                 </div>
                                                                 <div className="h-1 w-full bg-gray-200 dark:bg-slate-800 rounded-full mt-2 overflow-hidden">
                                                                     <div className="h-full bg-blue-500 w-[100%] shadow-[0_0_10px_rgba(59,130,246,0.3)] dark:shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
@@ -352,7 +332,7 @@ const Hero = () => {
 
                                                             {/* Bottom Code Snippet */}
                                                             <div className="col-span-2 h-20 bg-gray-50 dark:bg-[#0d1119] rounded border border-black/10 dark:border-white/5 p-3 font-mono text-[10px] text-gray-600 dark:text-slate-400 overflow-hidden leading-relaxed relative">
-                                                                <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-blue-900/20 dark:from-blue-600/10 to-transparent"></div>
+                                                                <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-gray-50 dark:from-[#0d1119] to-transparent"></div>
                                                                 <div><span className="text-pink-600 dark:text-pink-400">const</span> <span className="text-blue-600 dark:text-blue-300">initProtocol</span> = <span className="text-cyan-600 dark:text-yellow-300">async</span> () =&gt; {'{'}</div>
                                                                 <div className="pl-4"><span className="text-pink-600 dark:text-pink-400">await</span> <span className="text-blue-600 dark:text-blue-300">systemCheck</span>();</div>
                                                                 <div className="pl-4 text-gray-400 dark:text-slate-600">// Establishing secure connection</div>
@@ -364,8 +344,8 @@ const Hero = () => {
                                                 </div>
 
                                                 {/* Screen Gloss */}
-                                                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 via-transparent to-cyan-500/5 dark:from-blue-500/10 dark:to-cyan-500/10 pointer-events-none mix-blend-overlay"></div>
-                                                <div className="absolute top-0 right-0 w-[40%] h-full bg-gradient-to-l from-blue-500/20 dark:from-blue-500/10 to-transparent skew-x-12 opacity-30 pointer-events-none"></div>
+                                                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 via-transparent to-purple-500/5 dark:from-blue-500/10 dark:to-purple-500/10 pointer-events-none mix-blend-overlay"></div>
+                                                <div className="absolute top-0 right-0 w-[40%] h-full bg-gradient-to-l from-white/20 dark:from-white/5 to-transparent skew-x-12 opacity-30 pointer-events-none"></div>
                                             </div>
                                         </div>
 
@@ -373,8 +353,8 @@ const Hero = () => {
                                         <div className="absolute -top-6 -right-4 md:-right-12 z-30 w-48 glass-panel bg-white/70 dark:bg-transparent p-4 rounded-xl shadow-xl dark:shadow-2xl floating-anim border border-black/5 dark:border-white/10 backdrop-blur-xl">
                                             <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/40 dark:from-white/5 to-transparent pointer-events-none"></div>
                                             <div className="flex items-center gap-3 mb-2 relative z-10">
-                                                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
-                                                    <span className="material-icons text-[18px]">bolt</span>
+                                                <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)] overflow-hidden">
+                                                    <span className="material-icons text-[18px]" aria-hidden="true">bolt</span>
                                                 </div>
                                                 <span className="text-sm font-medium text-gray-800 dark:text-slate-200">Status do Sistema</span>
                                             </div>
@@ -394,8 +374,8 @@ const Hero = () => {
                                                         <span className="text-xs text-blue-400 font-medium">↑ 12%</span>
                                                     </div>
                                                 </div>
-                                                <div className="p-1.5 rounded bg-primary/20 text-primary border border-primary/20">
-                                                    <span className="material-icons text-[20px]">trending_up</span>
+                                                <div className="p-1.5 rounded bg-primary/20 text-primary border border-primary/20 overflow-hidden">
+                                                    <span className="material-icons text-[20px]" aria-hidden="true">trending_up</span>
                                                 </div>
                                             </div>
                                             <div className="flex items-end gap-1.5 h-12 w-full relative z-10">
@@ -409,8 +389,8 @@ const Hero = () => {
                                             </div>
                                         </div>
 
-                                        <div className="absolute inset-0 bg-blue-600/20 blur-[120px] -z-10 rounded-full opacity-70"></div>
-                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-600/10 blur-[80px] -z-20 rounded-full"></div>
+                                        <div className="absolute inset-0 bg-primary/15 blur-[120px] -z-10 rounded-full opacity-70"></div>
+                                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/5 blur-[80px] -z-20 rounded-full"></div>
                                     </div>
                                 </motion.div>
                             </div>
@@ -424,9 +404,9 @@ const Hero = () => {
                 <SwiperSlide>
                     {({ isActive }) => (
                         <div className="w-full h-full flex items-center relative overflow-hidden font-display">
-                            <div className="absolute inset-0 z-0 pointer-events-none" data-swiper-parallax="-300">
+                            <div className="absolute inset-0 z-0 pointer-events-none">
                                 {/* Enhanced Ambient Orbs (Dark Glassmorphism) */}
-                                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] mix-blend-screen will-change-transform"></div>
+                                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen will-change-transform"></div>
                             </div>
 
                             <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center h-full">
@@ -435,8 +415,6 @@ const Hero = () => {
                                     initial="hidden"
                                     animate={isActive ? "visible" : "hidden"}
                                     variants={slideVariants}
-                                    data-swiper-parallax="-100"
-                                    data-swiper-parallax-opacity="0"
                                 >
                                     <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 w-fit">
                                         <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
@@ -450,7 +428,7 @@ const Hero = () => {
                                         Sites genéricos não geram confiança. Construímos plataformas exclusivas que posicionam sua empresa como autoridade absoluta no mercado, desde o primeiro clique.
                                     </motion.p>
                                     <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mt-6">
-                                        <a href="#contact" className="btn-primary text-center px-8 py-4 text-lg font-bold hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all">
+                                        <a href="#contact" className="btn-primary text-center px-8 py-4 text-lg font-bold shadow-[0_0_30px_rgba(0,240,255,0.3)] hover:shadow-[0_0_40px_rgba(0,240,255,0.5)] transition-all">
                                             Garantir Minha Presença Premium
                                         </a>
                                         <a href="#about" className="btn-outline text-center px-8 py-4 text-lg font-bold border-gray-400 dark:border-white/20 hover:bg-white/5 backdrop-blur-sm">
@@ -463,11 +441,8 @@ const Hero = () => {
                                 <motion.div
                                     className="relative lg:h-[700px] w-full flex items-center justify-center perspective-[2000px] hidden lg:flex"
                                     style={{ x: springX, y: springY }}
-                                    data-swiper-parallax="200"
-                                    data-swiper-parallax-scale="0.8"
-                                    data-swiper-parallax-opacity="0"
                                 >
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/20 dark:bg-blue-600/20 rounded-full blur-[80px] pointer-events-none mix-blend-screen animate-pulse"></div>
+                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-300/30 dark:bg-primary/20 rounded-full blur-[80px] pointer-events-none mix-blend-multiply dark:mix-blend-screen animate-pulse"></div>
 
                                     <div className="relative w-full max-w-lg bg-white dark:bg-[#1a1c20]/80 rounded-2xl shadow-2xl dark:shadow-2xl p-8 z-20 border border-black/10 dark:border-white/10 overflow-hidden group hover:scale-[1.02] transition-transform duration-500">
 
@@ -568,12 +543,12 @@ const Hero = () => {
                                         transition={{ delay: 1, duration: 0.8 }}
                                     >
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-400">
-                                                <span className="material-icons">rocket_launch</span>
+                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-400 overflow-hidden">
+                                                <span className="material-icons" aria-hidden="true">rocket_launch</span>
                                             </div>
                                             <div>
                                                 <p className="text-xs text-gray-500 dark:text-gray-400">Meta</p>
-                                                <p className="text-sm font-bold text-gray-900 dark:text-white">🚀 Superada</p>
+                                                <p className="text-sm font-bold text-gray-900 dark:text-white">Meta Superada</p>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -585,8 +560,8 @@ const Hero = () => {
                                         transition={{ delay: 1.5, duration: 0.8 }}
                                     >
                                         <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-400">
-                                                <span className="material-icons">trending_up</span>
+                                            <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-400 overflow-hidden">
+                                                <span className="material-icons" aria-hidden="true">trending_up</span>
                                             </div>
                                             <div>
                                                 <p className="text-xs text-gray-500 dark:text-gray-400">Crescimento</p>
@@ -594,6 +569,7 @@ const Hero = () => {
                                             </div>
                                         </div>
                                     </motion.div>
+
                                 </motion.div>
                             </div>
                         </div>

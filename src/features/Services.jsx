@@ -12,21 +12,21 @@ const Services = () => {
         },
         {
             title: "Páginas de Alta Conversão",
-            description: "Trafego caro e sem resultado? Nossas Landing Pages utilizam engenharia de persuasão para transformar cada clique em um lead altamente qualificado.",
+            description: "Tráfego caro sem resultado? Nossas Landing Pages são estruturadas para transformar visitantes em contatos e vendas — sem desperdício de orçamento.",
             icon: "rocket_launch",
-            color: "from-blue-500 to-cyan-500"
+            color: "from-blue-400 to-cyan-400"
         },
         {
             title: "E-commerce de Performance",
-            description: "Carrinhos abandonados são vendas perdidas. Construímos lojas ultrarrápidas com checkouts sedutores focados na maximização do seu ticket médio.",
+            description: "Carrinhos abandonados são vendas perdidas. Construímos lojas ultrarrápidas com checkouts otimizados focados em conversão e ticket médio.",
             icon: "shopping_cart_checkout",
-            color: "from-yellow-400 to-amber-500"
+            color: "from-blue-500 to-cyan-500"
         },
         {
             title: "Sistemas Sob Medida",
-            description: "Seus processos manuais estão impedindo o crescimento da empresa? Automatizamos sua operação com software exclusivo que reduz custos e escala vendas.",
+            description: "Processos manuais custam tempo e dinheiro. Desenvolvemos sistemas exclusivos que automatizam sua operação e escalam junto com o negócio.",
             icon: "memory",
-            color: "from-emerald-500 to-teal-400"
+            color: "from-blue-600 to-blue-400"
         }
     ];
 
@@ -34,7 +34,7 @@ const Services = () => {
         { text: "SSL Seguro", icon: "lock" },
         { text: "Parceiro Google", icon: "verified" },
         { text: "Proteção LGPD", icon: "verified_user" },
-        { text: "Top Web Design RS", icon: "emoji_events" }
+        { text: "Top Web Design RS", icon: "star" }
     ];
 
     const containerVariants = {
@@ -58,7 +58,7 @@ const Services = () => {
             <div className="absolute inset-0 opacity-0 dark:opacity-[0.1]" style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '32px 32px' }}></div>
 
             {/* Subtle Gradient Spot */}
-            <div className="absolute top-[10%] right-0 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none will-change-transform mix-blend-screen"></div>
+            <div className="absolute top-[10%] right-0 w-[500px] h-[500px] bg-blue-100/30 dark:bg-blue-500/10 rounded-full blur-[120px] pointer-events-none will-change-transform mix-blend-screen"></div>
             <div className="absolute bottom-[10%] left-0 w-[500px] h-[500px] bg-yellow-100/30 dark:bg-blue-600/10 rounded-full blur-[120px] pointer-events-none will-change-transform mix-blend-screen"></div>
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-20">
@@ -85,8 +85,8 @@ const Services = () => {
                             className="bg-white dark:bg-white/5 backdrop-blur-[16px] rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-blue-50 dark:border-white/10 group relative overflow-hidden"
                         >
                             <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${service.color}`}></div>
-                            <div className="w-14 h-14 rounded-xl bg-gray-50 dark:bg-white/5 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm border border-gray-100 dark:border-white/5">
-                                <span className={`material-icons text-3xl bg-clip-text text-transparent bg-gradient-to-br ${service.color}`}>
+                            <div className="w-14 h-14 rounded-xl bg-gray-50 dark:bg-white/5 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm border border-gray-100 dark:border-white/5 overflow-hidden">
+                                <span className="material-icons text-3xl text-primary" aria-hidden="true">
                                     {service.icon}
                                 </span>
                             </div>

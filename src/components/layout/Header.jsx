@@ -50,30 +50,24 @@ const Header = () => {
     };
 
     return (
-        <header className="absolute top-0 left-0 right-0 z-50 px-4 py-4 md:px-6 md:py-6">
+        <header className={`fixed top-0 left-0 right-0 z-50 px-4 py-4 md:px-6 md:py-6 transition-all duration-500 ${isScrolled ? 'bg-white/80 dark:bg-[#020617]/90 backdrop-blur-xl shadow-md border-b border-gray-200/50 dark:border-white/5 py-2 md:py-3' : ''}`}>
             <div className="max-w-7xl mx-auto py-2 px-0 bg-transparent">
                 <div className="flex justify-between items-center">
-                    <div className="z-50 group flex items-center gap-3">
-                        <a href="#hero">
-                            <img src={logoPeacock} alt="LocyTech Logo" className="h-20 w-auto object-contain drop-shadow-md" />
-                        </a>
-                        <a href="#hero" className="logo-animate-container text-2xl font-display">
-                            <span className="actual-text">LocyTech</span>
-                            <span className="hover-text" aria-hidden="true">
-                                <span className="hover-locy">Locy</span>
-                                <span className="hover-tech">Tech</span>
-                            </span>
+                        <a href="#hero" className="flex items-center gap-3">
+                            <img src={logoPeacock} alt="LocyTech Logo" className="h-10 w-auto object-contain" />
+                            <div className="text-2xl font-bold">
+                                Locy<span className="text-primary">Tech</span>
+                            </div>
                         </a>
                     </div>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center gap-8">
-                        {['Início', 'Sobre Nós', 'Serviços', 'Planos', 'Portfólio'].map((item, index) => {
-                            const href = item === 'Início' ? '#hero' :
-                                item === 'Sobre Nós' ? '#about' :
-                                    item === 'Serviços' ? '#services' :
-                                        item === 'Planos' ? '#plans' :
-                                            '#portfolio';
+                        {['Início', 'Sobre Nós', 'Serviços', 'Processo'].map((item, index) => {
+                            const href = item === 'Início' ? '/#hero' :
+                                item === 'Sobre Nós' ? '/#about' :
+                                    item === 'Serviços' ? '/#services' :
+                                        '/#process';
                             return (
                                 <a
                                     key={index}
@@ -96,7 +90,7 @@ const Header = () => {
                         </button>
 
                         <a
-                            href="#contact"
+                            href="/#contact"
                             className="bg-primary/10 hover:bg-primary/20 border border-primary/50 text-primary text-sm font-bold py-2.5 px-6 rounded-lg transition-all hover:shadow-[0_0_20px_rgba(13,185,242,0.3)]"
                         >
                             Pedir Orçamento
@@ -141,12 +135,11 @@ const Header = () => {
                         variants={menuVariants}
                     >
                         <nav className="flex flex-col items-center gap-8">
-                            {['Início', 'Sobre Nós', 'Serviços', 'Planos', 'Portfólio'].map((item, index) => {
-                                const href = item === 'Início' ? '#hero' :
-                                    item === 'Sobre Nós' ? '#about' :
-                                        item === 'Serviços' ? '#services' :
-                                            item === 'Planos' ? '#plans' :
-                                                '#portfolio';
+                            {['Início', 'Sobre Nós', 'Serviços', 'Processo'].map((item, index) => {
+                                const href = item === 'Início' ? '/#hero' :
+                                    item === 'Sobre Nós' ? '/#about' :
+                                        item === 'Serviços' ? '/#services' :
+                                            '/#process';
                                 return (
                                     <motion.a
                                         key={index}
@@ -160,7 +153,7 @@ const Header = () => {
                                 );
                             })}
                             <motion.a
-                                href="#contact"
+                                href="/#contact"
                                 className="nav-btn-mobile mt-4 px-8 py-3 rounded-lg text-lg bg-primary text-black font-bold"
                                 onClick={() => setIsMenuOpen(false)}
                                 variants={itemVariants}

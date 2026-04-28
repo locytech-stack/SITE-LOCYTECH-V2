@@ -22,7 +22,7 @@ const WaveDivider = ({ lightFill, darkFill, type = 'wave' }) => {
 
     // We keep heights small (15px to 40px max) to make them subtle and elegant
     return (
-        <div className="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-[0] z-50 pointer-events-none">
+        <div className="absolute bottom-[-1px] left-0 w-full overflow-hidden leading-[0] z-[2] pointer-events-none">
             <svg
                 className="relative block h-[15px] sm:h-[20px] md:h-[30px] lg:h-[40px]"
                 style={{ width: 'calc(100% + 2px)', transform: 'translate(-1px, 0)' }}
